@@ -16,7 +16,7 @@ install:
   - npm install -g react-native-cli
   - npm install -g detox-cli
 
-  - yarn install
+  - npm install
 
 before_install: cd example
 
@@ -27,4 +27,4 @@ script:
 notifications:
   email:
     on_success: never
-    on_failure: always
+    on_failure: never
