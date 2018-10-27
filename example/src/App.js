@@ -13,17 +13,19 @@ const image = index => ({ image: newImage[index % newImage.length] });
 const items = Array.from(Array(5)).map((_, index) => image(index));
 
 export default class App extends PureComponent {
-  renderItemComponent = ({ item }) => <Image style={styles.image} source={item.image} />;
+  renderItemComponent = ({ item, index }) => (
+    <Image style={styles.image} source={item.image} testID={`itemId${index}`} />
+  );
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.container}>
+        <View style={styles.container} testID={'containerSwiper'}>
           <SwiperFlatList
-            autoplay
-            autoplayDelay={3}
-            index={3}
-            autoplayLoop
+            // autoplay
+            // autoplayDelay={3}
+            // index={3}
+            // autoplayLoop
             data={items}
             renderItem={this.renderItemComponent}
             showPagination
@@ -31,10 +33,10 @@ export default class App extends PureComponent {
         </View>
         <View style={styles.container}>
           <SwiperFlatList
-            autoplay
-            autoplayDelay={1.5}
-            autoplayLoop
-            index={3}
+            // autoplay
+            // autoplayDelay={1.5}
+            // autoplayLoop
+            // index={3}
             showPagination
             PaginationComponent={Pagination}
           >

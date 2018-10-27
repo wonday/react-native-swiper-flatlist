@@ -8,9 +8,13 @@
     "postinstall": "rm -rf node_modules/react-native-swiper-flatlist/node_modules/react-native",
     "watch": "node ./scripts/watch-and-copy.js",
     "start:watch": "concurrently 'npm run watch' 'npm run start'",
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "detox:build": "detox build --configuration ios.sim.debug",
+    "detox:test": "detox test --configuration ios.sim.debug"
   },
   "dependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "detox": "^9.0.5",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
     "react-native-swiper-flatlist": "*"
@@ -28,5 +32,16 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/SwiperFlatListExample.app",
+        "build": "xcodebuild -project ios/SwiperFlatListExample.xcodeproj -scheme SwiperFlatListExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone X"
+      }
+    },
+    "test-runner": "jest"
   }
 }

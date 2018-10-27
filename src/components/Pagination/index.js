@@ -35,8 +35,9 @@ export default class Pagination extends PureComponent {
       paginationStyle,
       paginationStyleItem,
     } = this.props;
+
     return (
-      <View style={[styles.container, paginationStyle]}>
+      <View style={[styles.container, paginationStyle]} testID={'paginationContainer'}>
         {data.map((_, index) => (
           <TouchableOpacity
             style={[
@@ -48,6 +49,7 @@ export default class Pagination extends PureComponent {
             ]}
             key={index}
             onPress={() => scrollToIndex(index)}
+            testID={`paginationId${index}`}
           />
         ))}
       </View>
