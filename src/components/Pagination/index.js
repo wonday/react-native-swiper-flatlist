@@ -35,9 +35,8 @@ export default class Pagination extends PureComponent {
       paginationStyle,
       paginationStyleItem,
     } = this.props;
-
     return (
-      <View style={[styles.container, paginationStyle]} testID={'paginationContainer'}>
+      <View style={[styles.container, paginationStyle]} testID="paginationContainer">
         {data.map((_, index) => (
           <TouchableOpacity
             style={[
