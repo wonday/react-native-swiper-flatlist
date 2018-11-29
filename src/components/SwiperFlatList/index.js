@@ -118,7 +118,7 @@ export default class SwiperFlatList extends PureComponent {
     }
     const params = { animated, index };
     this.setState(() => {
-      if (this.flatListRef) {
+      if (index<this._data.length && this.flatListRef) {
         this.flatListRef.scrollToIndex(params);
       }
       return { paginationIndex: index };
