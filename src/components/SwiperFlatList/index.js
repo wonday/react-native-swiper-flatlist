@@ -113,7 +113,7 @@ export default class SwiperFlatList extends PureComponent {
 
   _scrollToIndex = (index, animated = true) => {
     const { autoplay } = this.props;
-    if (autoplay && Platform.OS === 'android') {
+    if (autoplay) {
       this._autoplay(index);
     }
     const params = { animated, index };
@@ -136,9 +136,6 @@ export default class SwiperFlatList extends PureComponent {
       index = Math.floor(contentOffset.x / layoutMeasurement.width);
     }
 
-    if (autoplay) {
-      this._autoplay(index);
-    }
     this.setState({ paginationIndex: index });
 
     if (onMomentumScrollEnd) {
